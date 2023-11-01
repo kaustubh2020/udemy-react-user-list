@@ -5,7 +5,7 @@ import Card from "../UI/Card";
 
 import styles from "./AddUser.module.css";
 
-const AddUser = () => {
+const AddUser = (props) => {
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
 
@@ -15,9 +15,9 @@ const AddUser = () => {
       alert("Please enter a username/age first and try again");
       return;
     }
-    if (+enteredAge > 0) return;
+    if (+enteredAge < 1) return;
 
-    console.log(enteredAge, enteredUsername);
+    props.onAddUser(enteredUsername, enteredAge);
     setEnteredUsername("");
     setEnteredAge("");
   };
